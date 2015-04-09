@@ -1,7 +1,9 @@
 package mapperImpl;
 
-import mapper.MyContext;
-import mapper.MyMapperAPI;
+import api.MyContext;
+import api.MyMapperAPI;
+import impl.FloatWritable;
+import impl.StringWritable;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -16,13 +18,22 @@ public class AirlineMapper implements MyMapperAPI {
 
     @Override
     public void map(String line, MyContext myContext) {
+        
+        int keyIndex = 3;
+        int valueIndex = 4;
+        
         String[] lineSplit = line.split("\t");
-        String key = lineSplit[3];
-        String value = lineSplit[4];
+        String key = lineSplit[keyIndex];
+        
+        
         try {
-            myContext.write(key, value);
-        } catch (IOException e) {
-            LOGGER.log(Level.WARNING, "IOException encountered while writing the key:" + key + " value:" + value + " for line: " + line);
+            Float value = Float.parseFloat(lineSplit[valueIndex]);
+            myContext.write(new StringWritable(key), new FloatWritable(value));
+        }catch (NumberFormatException e){
+            LOGGER.log(Level.WARNING, "NumberFormatException encountered while writing the key:" + key + " value:" + lineSplit[valueIndex] + " for line: " + line);
+        }
+        catch (IOException e) {
+            LOGGER.log(Level.WARNING, "IOException encountered while writing the key:" + key + " value:" + lineSplit[valueIndex] + " for line: " + line);
         }
     }
 
