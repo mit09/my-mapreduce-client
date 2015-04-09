@@ -1,8 +1,9 @@
 package mapperImpl;
 
 import api.MyContext;
-import api.MyMapperAPI;
+import api.MyMapper;
 import impl.FloatWritable;
+import impl.LongWritable;
 import impl.StringWritable;
 
 import java.io.IOException;
@@ -12,29 +13,27 @@ import java.util.logging.Logger;
 /**
  * Created by mit on 4/2/15.
  */
-public class AirlineMapper implements MyMapperAPI {
+public class AirlineMapper implements MyMapper<LongWritable, StringWritable> {
     
     private final static Logger LOGGER = Logger.getLogger(AirlineMapper.class.getName());
 
     @Override
-    public void map(String line, MyContext myContext) {
-        
+    public void map(LongWritable key, StringWritable value, MyContext myContext) {
         int keyIndex = 3;
         int valueIndex = 4;
-        
-        String[] lineSplit = line.split("\t");
-        String key = lineSplit[keyIndex];
-        
-        
+
+        String[] lineSplit = value.getString().split("\t");
+        String opKey = lineSplit[keyIndex];
+
+
         try {
-            Float value = Float.parseFloat(lineSplit[valueIndex]);
-            myContext.write(new StringWritable(key), new FloatWritable(value));
+            Float opValue = Float.parseFloat(lineSplit[valueIndex]);
+            myContext.write(new StringWritable(opKey), new FloatWritable(opValue));
         }catch (NumberFormatException e){
-            LOGGER.log(Level.WARNING, "NumberFormatException encountered while writing the key:" + key + " value:" + lineSplit[valueIndex] + " for line: " + line);
+            LOGGER.log(Level.WARNING, "NumberFormatException encountered while writing the key:" + opKey + " value:" + lineSplit[valueIndex] + " for line: " + value.getString());
         }
         catch (IOException e) {
-            LOGGER.log(Level.WARNING, "IOException encountered while writing the key:" + key + " value:" + lineSplit[valueIndex] + " for line: " + line);
+            LOGGER.log(Level.WARNING, "IOException encountered while writing the key:" + opKey + " value:" + lineSplit[valueIndex] + " for line: " + value.getString());
         }
     }
-
 }
