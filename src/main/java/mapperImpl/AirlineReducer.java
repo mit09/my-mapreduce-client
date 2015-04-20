@@ -1,5 +1,6 @@
 package mapperImpl;
 
+import api.MyCombiner;
 import api.MyContext;
 import api.MyReducer;
 import impl.FloatWritable;
@@ -11,7 +12,7 @@ import java.util.Iterator;
 /**
  * Created by mit on 4/9/15.
  */
-public class AirlineReducer implements MyReducer<StringWritable, FloatWritable> {
+public class AirlineReducer implements MyReducer<StringWritable, FloatWritable>, MyCombiner<StringWritable, FloatWritable> {
     @Override
     public void reduce(StringWritable key, Iterator<FloatWritable> value, MyContext myContext) {
         

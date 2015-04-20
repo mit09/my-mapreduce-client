@@ -23,17 +23,19 @@ public class AirlineMapper implements MyMapper<LongWritable, StringWritable> {
         int valueIndex = 4;
 
         String[] lineSplit = value.getString().split("\t");
-        String opKey = lineSplit[keyIndex];
-
 
         try {
+            String opKey = lineSplit[keyIndex];
+
             Float opValue = Float.parseFloat(lineSplit[valueIndex]);
             myContext.write(new StringWritable(opKey), new FloatWritable(opValue));
         }catch (NumberFormatException e){
-            LOGGER.log(Level.WARNING, "NumberFormatException encountered while writing the key:" + opKey + " value:" + lineSplit[valueIndex] + " for line: " + value.getString());
+            LOGGER.log(Level.WARNING, "NumberFormatException encountered while writing for line: " + value.getString());
         }
         catch (IOException e) {
-            LOGGER.log(Level.WARNING, "IOException encountered while writing the key:" + opKey + " value:" + lineSplit[valueIndex] + " for line: " + value.getString());
+            LOGGER.log(Level.WARNING, "IOException encountered while writing for line: " + value.getString());
+        }catch (ArrayIndexOutOfBoundsException e){
+            LOGGER.log(Level.WARNING, "ArrayIndexOutOfBoundsException encountered while writing for line: " + value.getString());
         }
     }
 }

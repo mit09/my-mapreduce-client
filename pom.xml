@@ -7,12 +7,12 @@
     <properties>
         <jdk.version>1.7</jdk.version>
         <!--<api-jar-location>/home/mit/Desktop/input/api/target/api-1.0-SNAPSHOT.jar</api-jar-location>-->
-        <api-version>1.5-SNAPSHOT</api-version>
+        <api-version>1.7-SNAPSHOT</api-version>
     </properties>
 
     <groupId>my-mapreduce-client</groupId>
     <artifactId>client</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.3-SNAPSHOT</version>
     
     
     <dependencies>
