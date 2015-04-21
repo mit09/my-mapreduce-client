@@ -13,10 +13,6 @@ public class SSJobConf extends JobConf{
         JobConf.setMapValueInputClassName("impl.StringWritable");
         JobConf.setMapKeyOutputClassName("impl.StringWritable");
         JobConf.setMapValueOutputClassName("impl.StringWritable");
-        /*
-        JobConf.setReduceKeyOutputClassName("impl.StringWritable");
-        JobConf.setReduceValueOutputClassName("impl.FloatWritable");
-        */
         JobConf.setMapperClassName("Fibo.SSMapper");
         JobConf.setReducerClassName("Fibo.SSReducer");
 
