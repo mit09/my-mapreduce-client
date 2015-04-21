@@ -11,20 +11,22 @@ public class SSMapper implements MyMapper<LongWritable, StringWritable> {
 
 	@Override
 	public void map(LongWritable key, StringWritable value, MyContext myContext) {
-			String line = value.toString();
+			String line = value.getString();
 
 			int al = 0;
+
 			try{
 				al = Integer.parseInt(line);
 				if(al > 40 || al < 2) al = 20;
-				al = fibonacciRecusion(al);
+				al = fibonacciRecusion(Integer.parseInt(line));
+				System.out.println("Fibonacci of " + line + " is " + al);
 			}
 			catch(Exception e){
-				al = 40;
+				al = -1;
 			}
 
 		try {
-			myContext.write(new StringWritable(key.getString()), new StringWritable(new String("" + al + "")));
+			myContext.write(new StringWritable(value.getString()), new StringWritable(new String("" + al + "")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

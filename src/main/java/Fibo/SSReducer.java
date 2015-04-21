@@ -13,7 +13,7 @@ public class SSReducer implements MyReducer<StringWritable, StringWritable> {
 	public void reduce(StringWritable key, Iterator<StringWritable> values, MyContext myContext) {
 		StringBuilder sb = new StringBuilder();
 		while(values.hasNext()){
-			sb.append(values.next()+"\t");
+			sb.append(values.next().getString()+"\t");
 		}
 
 		try {

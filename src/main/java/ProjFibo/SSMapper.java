@@ -1,19 +1,23 @@
 package ProjFibo;
+import api.MyContext;
+import api.MyMapper;
+import impl.LongWritable;
+import impl.StringWritable;
+
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapreduce.Mapper;
 
-public class SSMapper extends
-		Mapper<LongWritable, Text, Text, Text> {
+public class SSMapper implements MyMapper<LongWritable, StringWritable> {
+
 	@Override
-	public void map(LongWritable key, Text value, Context context)
-			throws IOException, InterruptedException {
-		String line = value.toString();
-		context.write( new Text(""+key), new Text(new String(line)));
-	}
+	public void map(LongWritable key, StringWritable value, MyContext context)
+			{
+		String line = value.getString();
+
+				try {
+					context.write(new StringWritable(""+key.getString()), new StringWritable(line));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 }
