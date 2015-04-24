@@ -10,10 +10,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+
+/**
+ *  Created by Vishal
+ */
 public class SSMapper implements
         MyMapper<LongWritable, StringWritable> {
 
-
+    /**
+     *
+     * @param strURL
+     * @return
+     */
     static URLConnection connectURL(String strURL) {
         URLConnection conn = null;
         try {

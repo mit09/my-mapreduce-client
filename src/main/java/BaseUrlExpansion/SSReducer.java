@@ -7,6 +7,9 @@ import api.MyReducer;
 import impl.StringWritable;
 
 
+/**
+ *  Created by Vishal
+ */
 public class SSReducer implements
 		MyReducer<StringWritable, StringWritable> {
 

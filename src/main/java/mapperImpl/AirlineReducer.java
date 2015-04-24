@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 /**
- * Created by mit on 4/9/15.
+ * Created by Srikar on 4/9/15.
  */
 public class AirlineReducer implements MyReducer<StringWritable, FloatWritable>, MyCombiner<StringWritable, FloatWritable> {
     @Override

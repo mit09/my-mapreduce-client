@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.Iterator;
 
 
+/**
+ *  Created by Vishal
+ */
 public class SSReducer implements MyReducer<StringWritable, StringWritable> {
 
 	@Override

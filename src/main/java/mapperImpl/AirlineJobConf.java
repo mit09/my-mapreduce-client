@@ -3,10 +3,13 @@ package mapperImpl;
 import api.JobConf;
 
 /**
- * Created by srikar on 4/20/15.
+ * Created by Srikar on 4/20/15.
  */
 public class AirlineJobConf extends JobConf{
 
+    /**
+     * Initialize JobConf
+     */
     @Override
     public void initialize() {
         JobConf.setMapKeyInputClassName("impl.LongWritable");

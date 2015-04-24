@@ -1,8 +1,15 @@
 package median;
 import api.JobConf;
 
+
+/**
+ *  Created by Mit
+ */
 public class SSJobConf extends JobConf{
 
+	/**
+	 * Initialize JobConf
+	 */
 	@Override
 	public void initialize() {
 		JobConf.setMapKeyInputClassName("impl.LongWritable");

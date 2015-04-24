@@ -1,8 +1,13 @@
 package BaseUrlExpansion;
 import api.JobConf;
 
+/**
+ *  Created by Vishal
+ */
 public class SSJobConf extends JobConf{
-
+	/**
+	 * Initialize JobConf
+	 */
 	@Override
 	public void initialize() {
 		JobConf.setMapKeyInputClassName("impl.LongWritable");
@@ -11,7 +16,7 @@ public class SSJobConf extends JobConf{
 		JobConf.setMapValueOutputClassName("impl.StringWritable");
 		JobConf.setMapperClassName("BaseUrlExpansion.SSMapper");
 		JobConf.setReducerClassName("BaseUrlExpansion.SSReducer");
-//		JobConf.setNumReducers(2);
+
 	}
 
 }

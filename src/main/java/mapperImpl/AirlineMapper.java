@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by mit on 4/2/15.
+ * Created by Srikar on 4/2/15.
  */
 public class AirlineMapper implements MyMapper<LongWritable, StringWritable> {
     

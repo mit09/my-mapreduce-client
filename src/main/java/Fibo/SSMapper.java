@@ -7,6 +7,9 @@ import impl.StringWritable;
 
 import java.io.IOException;
 
+/**
+ *  Created by Vishal
+ */
 public class SSMapper implements MyMapper<LongWritable, StringWritable> {
 
 	@Override

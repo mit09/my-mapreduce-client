@@ -3,10 +3,12 @@ package Fibo;
 import api.JobConf;
 
 /**
- * Created by srikar on 4/20/15.
+ * Created by Vishal on 4/20/15.
  */
 public class SSJobConf extends JobConf{
-
+    /**
+     * Initialize JobConf
+     */
     @Override
     public void initialize() {
         JobConf.setMapKeyInputClassName("impl.LongWritable");
